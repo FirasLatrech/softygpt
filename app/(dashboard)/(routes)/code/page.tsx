@@ -1,7 +1,7 @@
 "use client";
 
 import * as z from "zod";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Code } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
@@ -50,8 +50,8 @@ const CodePage = () => {
       setMessages((current) => [...current, userMessage, response.data]);
 
       form.reset();
-    } catch (error) {
-      if (error?.response?.status === 403) {
+    } catch (error: any) {
+      if (error.response?.status === 403) {
         proModal.onOpen();
       } else {
         toast.error("Something went wrong.");
