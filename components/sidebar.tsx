@@ -1,5 +1,5 @@
 "use client";
-
+import sideBarIcon from "@/public/test.png";
 import Link from "next/link";
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
@@ -77,7 +77,7 @@ export const Sidebar = ({
       <div className="flex-1 px-3 py-2">
         <Link href="/dashboard" className="flex items-center pl-3 mb-14">
           <div className="relative w-8 h-8 mr-4 scale-150">
-            <Image fill alt="Logo" src="/test.png " className="scale-150" />
+            <Image fill alt="Logo" src={sideBarIcon} className="scale-150" />
           </div>
           <h1 className={cn("text-2xl font-bold", poppins.className)}>
             Softy GPT
