@@ -28,7 +28,7 @@ const VideoPage = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       prompt: "",
-    }
+    },
   });
 
   const isLoading = form.formState.isSubmitting;
@@ -37,11 +37,11 @@ const VideoPage = () => {
     try {
       setVideo(undefined);
 
-      const response = await axios.post('/api/video', values);
+      const response = await axios.post("/api/video", values);
 
       setVideo(response.data[0]);
       form.reset();
-    } catch (error: any) {
+    } catch (error) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
       } else {
@@ -50,9 +50,9 @@ const VideoPage = () => {
     } finally {
       router.refresh();
     }
-  }
-
-  return ( 
+  };
+  console.log("dkdkd");
+  return (
     <div>
       <Heading
         title="Video Generation"
@@ -63,37 +63,31 @@ const VideoPage = () => {
       />
       <div className="px-4 lg:px-8">
         <Form {...form}>
-          <form 
-            onSubmit={form.handleSubmit(onSubmit)} 
-            className="
-              rounded-lg 
-              border 
-              w-full 
-              p-4 
-              px-3 
-              md:px-6 
-              focus-within:shadow-sm
-              grid
-              grid-cols-12
-              gap-2
-            "
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="grid w-full grid-cols-12 gap-2 p-4 px-3 border rounded-lg md:px-6 focus-within:shadow-sm"
           >
             <FormField
               name="prompt"
               render={({ field }) => (
                 <FormItem className="col-span-12 lg:col-span-10">
-                  <FormControl className="m-0 p-0">
+                  <FormControl className="p-0 m-0">
                     <Input
                       className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
-                      disabled={isLoading} 
-                      placeholder="Clown fish swimming in a coral reef" 
+                      disabled={isLoading}
+                      placeholder="Clown fish swimming in a coral reef"
                       {...field}
                     />
                   </FormControl>
                 </FormItem>
               )}
             />
-            <Button className="col-span-12 lg:col-span-2 w-full" type="submit" disabled={isLoading} size="icon">
+            <Button
+              className="w-full col-span-12 lg:col-span-2"
+              type="submit"
+              disabled={isLoading}
+              size="icon"
+            >
               Generate
             </Button>
           </form>
@@ -103,17 +97,19 @@ const VideoPage = () => {
             <Loader />
           </div>
         )}
-        {!video && !isLoading && (
-          <Empty label="No video files generated." />
-        )}
+
+        {!video && !isLoading && <Empty label="No video files generated." />}
         {video && (
-          <video controls className="w-full aspect-video mt-8 rounded-lg border bg-black">
+          <video
+            controls
+            className="w-full mt-8 bg-black border rounded-lg aspect-video"
+          >
             <source src={video} />
           </video>
         )}
       </div>
     </div>
-   );
-}
- 
+  );
+};
+
 export default VideoPage;
