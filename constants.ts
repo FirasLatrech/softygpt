@@ -1,4 +1,12 @@
-import { Code, ImageIcon, MessageSquare, Music, VideoIcon } from "lucide-react";
+import {
+  BookTemplate,
+  Code,
+  ImageIcon,
+  Languages,
+  MessageSquare,
+  Music,
+  VideoIcon,
+} from "lucide-react";
 
 export const MAX_FREE_COUNTS = 10;
 
@@ -30,6 +38,20 @@ export const tools = [
     color: "text-orange-700",
     bgColor: "bg-orange-700/10",
     href: "/video",
+  },
+  {
+    label: "Arabe",
+    icon: Languages,
+    color: "text-red-500",
+    bgColor: "bg-red-300/20",
+    href: "/arabe",
+  },
+  {
+    label: "Translate",
+    icon: BookTemplate,
+    color: "text-blue-700",
+    bgColor: "bg-blue-300/10",
+    href: "/translate",
   },
   {
     label: "Code Generation",

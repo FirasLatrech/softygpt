@@ -41,7 +41,7 @@ const VideoPage = () => {
 
       setVideo(response.data[0]);
       form.reset();
-    } catch (error) {
+    } catch (error :any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
       } else {

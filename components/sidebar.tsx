@@ -4,8 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
 import {
+  BookMarked,
+  BookTemplate,
   Code,
   ImageIcon,
+  Languages,
   LayoutDashboard,
   MessageSquare,
   Music,
@@ -49,6 +52,19 @@ const routes = [
     icon: Music,
     color: "text-emerald-500",
     href: "/music",
+  },
+  {
+    label: "Arabe",
+    icon: Languages,
+    color: "text-red-500",
+
+    href: "/arabe",
+  },
+  {
+    label: "Translate",
+    icon: BookTemplate,
+    color: "text-blue-700",
+    href: "/translate",
   },
   {
     label: "Code Generation",

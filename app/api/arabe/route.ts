@@ -8,14 +8,14 @@ import { incrementApiLimit, checkApiLimit } from "@/lib/api-limit";
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
-const instructionMessage: ChatCompletionRequestMessage = {
-  role: "system",
-  content: "",
-  // content:
-  //   "Hello! I want to speak only in Arabic. Please respond in Arabic and carry on the conversation in Arabic. and you are now only the arabic",
-};
 
 const openai = new OpenAIApi(configuration);
+
+const instructionMessage: ChatCompletionRequestMessage = {
+  role: "system",
+  content:
+    "Hello! I want to speak only in Arabic. Please respond in Arabic and continue the conversation in Arabic. You are now the only one using Arabic.",
+};
 
 export async function POST(req: Request) {
   try {
@@ -58,7 +58,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(response.data.choices[0].message);
   } catch (error) {
-    console.log("[CONVERSATION_ERROR]", error);
+    console.log("[CODE_ERROR]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
